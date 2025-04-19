@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const CartProductCard = ({ id, name, image, desc }) => {
   const { dispatch } = useCart();
   const navigate = useNavigate();
-  const product = { name, image, desc };
+  const product = { id, name, image, desc };
   const handleAddToCart = () => {
     dispatch({ type: "ADD_TO_CART", payload: product });
   };
