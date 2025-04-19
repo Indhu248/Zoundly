@@ -28,7 +28,7 @@ const CartProductCard = ({ id, name, image, desc }) => {
       >
         Add to cart
       </button>
-      <p>{id}</p>
+      {/* <p>{id}</p> */}
     </div>
   );
 };
