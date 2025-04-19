@@ -1,5 +1,3 @@
-Awesome! Here's an updated `README.md` file with **Razorpay** and **Netlify** included:
-
 ```markdown
 # Zoundly - Shopping Website 🛍️
 
