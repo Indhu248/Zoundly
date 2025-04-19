@@ -28,7 +28,7 @@ Zoundly is a modern and responsive e-commerce web application built using **Reac
 ---
 
 ## 📦 Project Structure
-
+```
 Zoundly/
 ├── front-end/
 │   ├── public/
