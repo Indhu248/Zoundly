@@ -1,4 +1,3 @@
-```markdown
 # Zoundly - Shopping Website 🛍️
 
 Zoundly is a modern and responsive e-commerce web application built using **React + Vite**. It features dynamic product listings, shopping cart functionality, and secure payments via **Razorpay**. The project is deployed on **Netlify**.
@@ -30,7 +29,6 @@ Zoundly is a modern and responsive e-commerce web application built using **Reac
 
 ## 📦 Project Structure
 
-```
 Zoundly/
 ├── front-end/
 │   ├── public/
