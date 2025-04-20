@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { logoImage, VectorImage } from '../assets';
 import { Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 // import { link } from 'fs';
 // import { link } from 'fs';
 
@@ -36,8 +36,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={`w-full transition-all duration-300 ${
-        isScrolled ? 'fixed top-0 z-50 bg-white shadow-md' : 'bg-transparent'
+      className={`z-50 w-full transition-all duration-300 ${
+        isScrolled ? 'fixed top-0 bg-white shadow-md' : 'bg-transparent'
       }`}
     >
       <div className="flex justify-between items-center px-4 py-0 md:px-16">
@@ -52,15 +52,12 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-6">
           {nav_links.map((link, index) => (
             <li>
-              <a onClick={() => {
-                if (link.link) {
-                  navigate(link.link);
-                  console.log(link.link)
-                }
-              }}
-              key={index}
-              className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer transition"
-            >{link.name}</a>
+              <Link 
+      to={link.link} 
+      className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer transition"
+    >
+      {link.name}
+    </Link>
             </li>
           ))}
         </ul>
