@@ -60,7 +60,7 @@ const Navbar = () => {
               }}
               key={index}
               className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer transition"
-            href={link.link}>{link.name}</a>
+            >{link.name}</a>
             </li>
           ))}
         </ul>
