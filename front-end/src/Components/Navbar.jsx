@@ -51,8 +51,8 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <ul className="hidden md:flex items-center gap-6">
           {nav_links.map((link, index) => (
-            <li
-              onClick={() => {
+            <li>
+              <a onClick={() => {
                 if (link.link) {
                   navigate(link.link);
                   console.log(link.link)
@@ -60,8 +60,7 @@ const Navbar = () => {
               }}
               key={index}
               className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer transition"
-            >
-              <a href={link.link}>{link.name}</a>
+            href={link.link}>{link.name}</a>
             </li>
           ))}
         </ul>
