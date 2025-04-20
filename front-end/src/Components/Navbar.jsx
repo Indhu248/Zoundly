@@ -86,10 +86,13 @@ const Navbar = () => {
         <ul className="md:hidden px-6 py-4 flex flex-col gap-4 bg-white shadow-sm">
           {nav_links.map((link, index) => (
             <li
-              key={index}
-              className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer"
-            >
-              {link.name}
+              >
+              <button
+      onClick={() => navigate(link.link)}
+      className="text-sm text-black hover:text-[#C3FF6A] cursor-pointer transition bg-transparent border-none"
+    >
+      {link.name}
+    </button>
             </li>
           ))}
         </ul>
