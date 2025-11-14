@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: zoundly-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Add these in Render dashboard instead of here for security:
+      # - FRONTEND_URL
+      # - MONGODB_URI
+      # - JWT_SECRET
+      # - JWT_REFRESH_SECRET
+      # - RAZORPAY_KEY_ID
+      # - RAZORPAY_KEY_SECRET
+      # - RAZORPAY_WEBHOOK_SECRET
+
