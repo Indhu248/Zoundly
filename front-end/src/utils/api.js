@@ -3,6 +3,15 @@
 // For production, set VITE_API_URL in Vercel environment variables
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://zoundly-backend.onrender.com/api';
 
+// Debug: Log the API URL being used (remove in production if needed)
+if (import.meta.env.DEV || import.meta.env.MODE === 'development') {
+  console.log('🔍 API Base URL:', API_BASE_URL);
+  console.log('🔍 VITE_API_URL env:', import.meta.env.VITE_API_URL);
+} else {
+  // In production, log once to help debug
+  console.log('🌐 Using API URL:', API_BASE_URL);
+}
+
 const getAuthToken = () => {
   return localStorage.getItem('token');
 };
