@@ -21,28 +21,43 @@ const apiCall = async (endpoint, options = {}) => {
       ...(token && { Authorization: `Bearer ${token}` }),
       ...options.headers,
     },
+    credentials: 'include', // Include cookies for CORS
     ...(options.body && { body: options.body }),
   };
 
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+  const fullUrl = `${API_BASE_URL}${endpoint}`;
   
-  if (!response.ok) {
-    // Handle 401 Unauthorized - token expired or invalid
-    if (response.status === 401) {
-      // Clear invalid tokens
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
-      // Redirect to login if not already there
-      if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
-        window.location.href = '/login';
-      }
-    }
+  try {
+    const response = await fetch(fullUrl, config);
     
-    const error = await response.json().catch(() => ({ message: 'An error occurred' }));
-    throw new Error(error.message || `HTTP error! status: ${response.status}`);
-  }
+    if (!response.ok) {
+      // Handle 401 Unauthorized - token expired or invalid
+      if (response.status === 401) {
+        // Clear invalid tokens
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        // Redirect to login if not already there
+        if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
+          window.location.href = '/login';
+        }
+      }
+      
+      const error = await response.json().catch(() => ({ message: 'An error occurred' }));
+      throw new Error(error.message || `HTTP error! status: ${response.status}`);
+    }
 
-  return response.json();
+    return response.json();
+  } catch (error) {
+    // Enhanced error logging for debugging
+    console.error('API Call Failed:', {
+      url: fullUrl,
+      endpoint,
+      method: config.method,
+      error: error.message,
+      apiBaseUrl: API_BASE_URL,
+    });
+    throw error;
+  }
 };
 
 export const api = {
