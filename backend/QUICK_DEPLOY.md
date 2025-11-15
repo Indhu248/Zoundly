@@ -18,11 +18,13 @@
 4. **Connect GitHub** → Select `Indhu248/Zoundly`
 5. **Settings:**
    - Name: `zoundly-backend`
-   - Root Directory: `backend`
+   - **Root Directory:** `backend` ⚠️ **IMPORTANT: Must set this!**
    - Environment: `Node`
-   - Build Command: `npm install`
-   - Start Command: `npm start`
+   - Build Command: `npm install` (or leave blank, Render will auto-detect)
+   - Start Command: `npm start` (or leave blank, Render will auto-detect)
    - Instance: **Free**
+   
+   **⚠️ CRITICAL:** Make sure "Root Directory" is set to `backend` (without quotes, just `backend`). This tells Render where your `package.json` is located.
 
 6. **Environment Variables** (click "Environment" tab):
    ```

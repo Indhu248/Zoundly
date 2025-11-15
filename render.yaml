@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: zoundly-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # IMPORTANT: Add these environment variables in Render Dashboard:
+      # - FRONTEND_URL (your Vercel frontend URL)
+      # - MONGODB_URI (MongoDB Atlas connection string)
+      # - JWT_SECRET (random 64-char string)
+      # - JWT_REFRESH_SECRET (random 64-char string)
+      # - JWT_EXPIRES_IN=15m
+      # - JWT_REFRESH_EXPIRES_IN=7d
+      # - RAZORPAY_KEY_ID (from Razorpay dashboard)
+      # - RAZORPAY_KEY_SECRET (from Razorpay dashboard)
+      # - RAZORPAY_WEBHOOK_SECRET (from Razorpay dashboard)
+
+
