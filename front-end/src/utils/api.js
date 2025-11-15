@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Use environment variable or fallback to Render backend URL
+// For local development, set VITE_API_URL=http://localhost:5000/api in .env
+// For production, set VITE_API_URL in Vercel environment variables
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://zoundly-backend.onrender.com/api';
 
 const getAuthToken = () => {
   return localStorage.getItem('token');
