@@ -22,7 +22,8 @@ const app = express();
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:5173',
-  'https://zoundly-cipculyju-indhu248s-projects.vercel.app',
+  'https://zoundly.vercel.app', // Production Vercel URL
+  'https://zoundly-cipculyju-indhu248s-projects.vercel.app', // Preview URL
   // Allow all Vercel preview URLs (they change with each deployment)
   /^https:\/\/.*\.vercel\.app$/,
   // Add any other frontend URLs here
@@ -48,14 +49,16 @@ app.use(cors({
       callback(null, true);
     } else {
       // Log for debugging
-      console.log('CORS blocked origin:', origin);
-      console.log('Allowed origins:', allowedOrigins);
+      console.log('⚠️ CORS blocked origin:', origin);
+      console.log('✅ Allowed origins:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
 }));
 
 app.use(express.json());
